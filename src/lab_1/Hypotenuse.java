@@ -24,9 +24,11 @@ public class Hypotenuse {
 	}
 
 	public static void main(String[] args) {
-		System.out.println("РљР°С‚РµС‚ Р° = " + a);
-		System.out.println("РљР°С‚РµС‚ b = " + b);
-		System.out.println("Р“РёРїРѕС‚РµРЅСѓР·Р° СЃ = " + hyp());
+		System.out.println("Катет a = " + a);
+		System.out.println("Катет b = " + b);
+		System.out.println("Гипотенуза c = " + anotherHyp(a, b));
 		System.out.println(power(a, b));
+		System.out.println(power(a, b));
+		System.out.println(Math.pow(a,  b));
 	}
 }
