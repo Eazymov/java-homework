@@ -11,7 +11,11 @@ public class Tax {
 		System.out.println(calculateTaxAmount(income, percent, limit));
 	}
 	
-	private static double calculateTaxAmount(double income, double percent, double limit)
+	private static double calculateTaxAmount(
+			double income,
+			double percent,
+			double limit
+	)
 	{
 		return income > limit ? income * percent / 100 : 0;
 	}
