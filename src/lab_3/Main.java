@@ -16,12 +16,12 @@ public class Main {
 		String SHIFT_RIGHT = Integer.toBinaryString(firstum >> secondNum);
 		String SHIFT_LEFT = Integer.toBinaryString(firstum << secondNum);
 
-		printResult("ÐŸÐ¾Ð±Ð¸Ñ‚Ð¾Ð²Ñ‹Ð¹ NOT: ", NOT);
-		printResult("ÐŸÐ¾Ð±Ð¸Ñ‚Ð¾Ð²Ñ‹Ð¹ AND: ", AND);
-		printResult("ÐŸÐ¾Ð±Ð¸Ñ‚Ð¾Ð²Ñ‹Ð¹ OR: ", OR);
-		printResult("ÐŸÐ¾Ð±Ð¸Ñ‚Ð¾Ð²Ñ‹Ð¹ Ð¸ÑÐºÐ»ÑŽÑ‡Ð°ÐµÑ‰ÐµÐµ OR: ", XOR);
-		printResult("ÐŸÐ¾Ð±Ð¸Ñ‚Ð¾Ð²Ñ‹Ð¹ ÑÐ´Ð²Ð¸Ð³ Ð²Ð¿Ñ€Ð°Ð²Ð¾: ", SHIFT_RIGHT);
-		printResult("ÐŸÐ¾Ð±Ð¸Ñ‚Ð¾Ð²Ñ‹Ð¹ ÑÐ´Ð²Ð¸Ð³ Ð²Ð»ÐµÐ²Ð¾: ", SHIFT_LEFT);
+		printResult("Ðåçóëüòàò ïîáèòîâîãî NOT: ", NOT);
+		printResult("Ðåçóëüòàò ïîáèòîâîãî AND: ", AND);
+		printResult("Ðåçóëüòàò ïîáèòîâîãî OR: ", OR);
+		printResult("Ðåçóëüòàò ïîáèòîâîãî èñêëþ÷àþùåãî OR: ", XOR);
+		printResult("Ðåçóëüòàò ïîáèòîâîãî ñäâèãà âïðàâî¾: ", SHIFT_RIGHT);
+		printResult("Ðåçóëüòàò ïîáèòîâîãî ñäâèãà âëåâî: ", SHIFT_LEFT);
 	}
 	
 	private static void printResult(String desc, String result)

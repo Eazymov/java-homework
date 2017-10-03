@@ -4,7 +4,7 @@ public class Tax {
 
 	public static void main(String[] args)
 	{
-		double income = 25000;
+		double income = 85;
 		double percent = 18;
 		double limit = 25000;
 
@@ -17,6 +17,6 @@ public class Tax {
 			double limit
 	)
 	{
-		return income > limit ? income * percent / 100 : 0;
+		return income < 20 ? income * 0.12 : (income < 40 ? income * 0.15 : (income < 60 ? income * 0.2 : (income < 80 ? income * 0.25 : (income * 0.3))));
 	}
 }
