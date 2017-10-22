@@ -2,6 +2,8 @@ package lab_7;
 
 import java.util.Calendar;
 import java.util.Scanner;
+import java.io.File;
+import java.util.Formatter;
 
 public class CalculateAge {
 	
@@ -10,24 +12,63 @@ public class CalculateAge {
 		Scanner sc = new Scanner(System.in);
 		String birthdate, name;
 		int age;
+		
+		readFile();
 
-		System.out.println("Введите свое имя или дату рождения: ");
+		System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: ");
 		String value = sc.nextLine();
 		
 		if (isNumber(value)) {
 			birthdate = value;
 			age = getAgeFromBirthday(birthdate);
 
-			System.out.println("Вам " + age + " лет. Введите свое имя: ");
+			System.out.println("пїЅпїЅпїЅ " + age + " пїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ: ");
 			name = sc.nextLine();
-			System.out.println("Здравствуйте, " + name + ".");
+			System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, " + name + ".");
 		} else {
 			name = value;
 
-			System.out.println("Здравствуйте, " + name + ". Введите свою дату рождения: ");
+			System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, " + name + ". пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: ");
 			birthdate = sc.nextLine();
 			age = getAgeFromBirthday(birthdate);
-			System.out.println("Вам " + age + " лет.");
+			System.out.println("пїЅпїЅпїЅ " + age + " пїЅпїЅпїЅ.");
+		}
+		
+		saveToFile(name, age);
+	}
+	
+	private static void readFile()
+	{
+		File file = new File("file.txt");
+		
+		try {
+			Scanner sc = new Scanner(file);
+			
+			if (!sc.hasNext()) return;
+			
+			String string = sc.nextLine();
+			String[] parts = string.split("&");
+			String name = parts[0].split("=")[1];
+			String age = parts[1].split("=")[1];
+			System.out.println("Last saved data: name = " + name + ", age = " + age);
+			
+		} catch (Exception exc)
+		{
+			System.out.print(exc);
+		}
+	}
+	
+	private static void saveToFile(String name, int age)
+	{
+		try {
+			Formatter f = new Formatter("file.txt");
+			
+			f.format("name=" + name + "&age=" + age);
+			f.close();
+
+		} catch (Exception exc)
+		{
+			System.out.print(exc);
 		}
 	}
 	
