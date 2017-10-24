@@ -4,30 +4,84 @@ public class LuckyTicket {
 
 	public static void main(String[] args)
 	{
-		boolean isLucky = isLuckyTicket("123456", 225);
-		
-		System.out.println("Given ticket has " + (isLucky ? "" : "not ") + "lucky number!");
+		printLuckyTickets();
+		printSuperLuckyTickets();
 	}
 	
-	private static boolean isLuckyTicket(String ticket, int ticketNumber)
+	private static void printLuckyTickets()
 	{
-		String[] substrings = ticket.split("(?<=\\G.{3})");
-		int firstHalfValue = getAmountFromString(substrings[0]);
-		int secondHalfValue = getAmountFromString(substrings[1]);
-
-		return (firstHalfValue == ticketNumber) || (secondHalfValue == ticketNumber);
-	}
-	
-	private static int getAmountFromString(String string)
-	{
-		String[] numbers = string.split("");
-		int result = 0;
+		int count = 0;
 		
-		for (String num: numbers)
+		for (int ticket = 0; ticket < 1000000; ticket++)
 		{
-			result += Integer.parseInt(num);
+			if (isLuckyTicket(ticket))
+			{
+				System.out.println(String.format("%06d", ticket));
+				count++;
+			}
 		}
+	
+		System.out.println("\nКоличество счастливых билетов: " + count + "\n");
+	}
+
+	private static void printSuperLuckyTickets()
+	{
+		int count = 0;
 		
-		return result;
+		for (int ticket = 0; ticket < 1000000; ticket++)
+		{
+			if (isLuckyTicket(ticket) && isSuperLuckyTicket(ticket))
+			{
+				
+				System.out.println(String.format("%06d", ticket));
+				count++;
+			}
+		}
+	
+		System.out.println("\nКоличество супер-счастливых билетов: " + count);
+	}
+	
+	private static boolean isLuckyTicket(int ticket)
+	{
+		int a = ticket / 100000;
+		int b = ticket % 100000 / 10000;
+		int c = ticket % 10000 / 1000;
+		int d = ticket % 1000 / 100;
+		int e = ticket % 100 / 10;
+		int f = ticket % 10 / 1;
+		int firstSum = a + b + c;
+		int secondSum = d + e + f;
+		
+		return firstSum == secondSum;
+	}
+	
+	private static boolean isSuperLuckyTicket(int ticket)
+	{
+		int a = ticket / 100000;
+		int b = ticket % 100000 / 10000;
+		int c = ticket % 10000 / 1000;
+		int d = ticket % 1000 / 100;
+		int e = ticket % 100 / 10;
+		int f = ticket % 10 / 1;
+		int firstSum = a + b + c;
+		int secondSum = d + e + f;
+		
+		for (int power = 0; power < 100; power++)
+		{
+			if (Math.pow(firstSum, power) > ticket || Math.pow(secondSum, power) > ticket)
+			{
+				return false;
+
+			} else if (Math.pow(firstSum, power) == ticket || Math.pow(secondSum, power) == ticket)
+			{
+				System.out.print("Степень: " + power + ", число: ");
+				return true;
+			} else
+			{
+				continue;
+			}
+		}
+
+		return false;
 	}
 }
